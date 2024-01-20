@@ -1,0 +1,88 @@
+Docker base image
+
+Alpine Linux: 
+It's often recommended for production deployments where minimizing image size 
+is crucial, especially for microservices and cloud-native applications.
+
+Debian: 
+Strikes a good balance between size and functionality, making it a solid choice for 
+a wide range of applications. It's often used when a more complete environment 
+is needed compared to Alpine.
+
+# Update package lists and upgrade existing packages
+RUN apt update -y && apt upgrade -y: 
+This line updates the package lists (apt update) and upgrades existing packages (apt upgrade). 
+The -y flag is used to automatically confirm prompts during the update and upgrade process.
+
+# Install NGINX and OpenSSL
+RUN apt install -y \
+    nginx \
+    openssl
+OpenSSL is an open-source implementation of the SSL (Secure Sockets Layer) and TLS (Transport Layer Security) protocols. 
+It provides a set of cryptographic functions and libraries that enable secure communication over a computer network.
+OpenSSL is used for generating, managing, and verifying SSL/TLS certificates. 
+SSL certificates are essential for establishing the authenticity of the server to clients and vice versa. 
+They play a key role in the handshake process during the establishment of a secure connection. 
+NGINX uses OpenSSL to handle SSL certificates and private keys.
+
+RUN openssl req -x509 -newkey rsa:2048 -nodes \
+    -out /etc/nginx/cert.pem \
+    -keyout /etc/nginx/key.pem -subj "/C=/ST=/L=/O=/CN=${DOMAIN_NAME}"
+
+The RUN instruction you provided is used to generate a self-signed SSL/TLS certificate using OpenSSL. 
+openssl req: Initiates a new certificate request.
+-x509: Instructs OpenSSL to generate a self-signed certificate.The most common format for public key certificates is defined by X.509.
+-newkey rsa:2048: Creates a new RSA private key of 2048 bits.
+nodes: Specifies that the private key should not be encrypted with a passphrase. 
+This is often done in the context of Docker containers to avoid manual passphrase entry.
+-out /etc/nginx/cert.pem: Specifies the output file where the certificate will be saved. 
+In this case, it's /etc/nginx/cert.pem.
+-keyout /etc/nginx/key.pem: Specifies the output file where the private key will be saved. 
+In this case, it's /etc/nginx/key.pem.
+-subj "/C=/ST=/L=/O=/CN=${DOMAIN_NAME}": Specifies the subject of the Public key certificate. 
+The ${DOMAIN_NAME} variable is used to dynamically set the Common Name (CN) field of the certificate, typically representing the domain name. 
+/C=: Country Name.
+/ST=: State or Province Name
+/L=: Locality Name
+/O=: Organization Name.
+/CN=${DOMAIN_NAME}: Common Name. This field represents the fully qualified domain name (FQDN) for which the certificate is issued. 
+${DOMAIN_NAME} variable is used here to dynamically set the Common Name. It's assumed that you have defined the DOMAIN_NAME variable elsewhere in your script or environment.
+This command generates a self-signed certificate and private key, placing them in the specified locations (/etc/nginx/cert.pem and /etc/nginx/key.pem, respectively). 
+The Common Name (CN) is set to the value of the ${DOMAIN_NAME} variable, which should be previously defined, typically in the Docker environment or a related configuration file.
+
+This self-signed certificate is useful for development and testing purposes. 
+In a production environment, it's recommended to obtain a valid SSL/TLS certificate from a trusted Certificate Authority (CA) for proper security.
+
+
+Additionally, after installing packages, it's a good practice to clean up the package manager's cache to reduce the image size:
+# Clean up APT cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# copy files or directories from the host machine to the specified location within the Docker image. 
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+The file nginx.conf from the host machine will be copied to /etc/nginx/conf.d/default.conf in the Docker image.
+This is a common practice when working with NGINX in Docker. 
+The default.conf file is often used as the default configuration for NGINX, 
+and by copying your custom configuration there, you can override the default NGINX configuration within the Docker image.
+
+# Run nginx in the foreground so the container doesn't stop
+CMD [ "nginx", "-g", "daemon off;" ]
+
+-g: This option allows you to pass a configuration directive directly from the command line. 
+In this case, it's used to provide NGINX with the configuration directive "daemon off;".
+
+"daemon off;": This configuration directive tells NGINX not to run in the background as a daemon. 
+By default, NGINX runs in the background as a daemon process. 
+However, when running in a Docker container, it's common to run processes in the foreground, 
+so that Docker can better manage them.
+
+CMD ["nginx", "-g", "daemon off;"]
+
+Instructs Docker to run the NGINX server, passing the configuration directive 
+to keep it running in the foreground. 
+This is beneficial in a containerized environment because Docker expects the 
+main process of a container to remain running, and when the main process exits, 
+the container is considered to have completed its execution.
+
+this command ensures that NGINX runs in the foreground and remains the main process of the container,
+allowing Docker to manage the container's lifecycle effectively.
