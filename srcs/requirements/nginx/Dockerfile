@@ -14,10 +14,6 @@ RUN mkdir -p /etc/nginx/ssl &&\
 
 RUN mkdir -p /run/nginx
 
-COPY start.sh /start.sh
-
 EXPOSE 80 443
 
-# CMD ["nginx", "-g", "daemon off;"]
-CMD ["/bin/bash", "/start.sh"]
-
+CMD ["nginx", "-g", "daemon off;"]
