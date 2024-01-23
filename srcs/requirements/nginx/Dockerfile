@@ -18,16 +18,4 @@ RUN mkdir -p /run/nginx
 
 EXPOSE 80 443
 
-<<<<<<< HEAD
-ENTRYPOINT ["/bin/bash", "/start.sh"]
-
 CMD ["nginx", "-g", "daemon off;"]
-
-# if only one command use only entrypoint
-# ENTRYPOINT ["nginx", "-g", "daemon off;"]	
-
-
-
-=======
-CMD ["nginx", "-g", "daemon off;"]
->>>>>>> 71ebd0d551ddd5031c21047b1630a107907c7b10
