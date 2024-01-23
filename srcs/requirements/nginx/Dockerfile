@@ -1,5 +1,7 @@
 FROM debian:oldstable
 
+# WORKDIR /the/workdir/path
+
 RUN apt update -y && apt upgrade -y
 
 RUN apt install -y\
@@ -18,6 +20,12 @@ COPY start.sh /start.sh
 
 EXPOSE 80 443
 
-# CMD ["nginx", "-g", "daemon off;"]
-CMD ["/bin/bash", "/start.sh"]
+ENTRYPOINT ["/bin/bash", "/start.sh"]
+
+CMD ["nginx", "-g", "daemon off;"]
+
+# if only one command use only entrypoint
+# ENTRYPOINT ["nginx", "-g", "daemon off;"]	
+
+
 

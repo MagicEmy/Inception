@@ -13,6 +13,7 @@ cat << EOF > /etc/nginx/conf.d/ssl.conf
 # Paste your ssl configuration here
 EOF
 
-# Start Nginx
-exec nginx -g 'daemon off;'
+# Start Nginx PID 1	
+
+exec ${@}
 
