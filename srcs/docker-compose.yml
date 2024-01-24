@@ -2,14 +2,15 @@ version: '3'
 
 services:
   nginx:
-    build:
-      context: .requirements/nginx
-      dockerfile: Dockerfile
-    image: nginx
+    # docker build -t nginx 
+    build: requirements/nginx/
+    dockerfile: Dockerfile
     container name: nginx
+    env_file: .env 
     ports:
       - "443:443"
-    restart: unless-stopped
+    restart: unless-stopped 
+    # or always?
     depends_on:
       - serviceName: .requirements/nginx
         condition: service_started
@@ -39,36 +40,36 @@ services:
       - wordpress-net
     volumes:
       - ./wordpress:/var/www/html
-    depends_on:
-      - mariadb
-    environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: root
-      WORDPRESS_DB_NAME: wordpress
-    restart: unless-stopped
+#     depends_on:
+#       - mariadb
+#     environment:
+#       WORDPRESS_DB_HOST: mariadb
+#       WORDPRESS_DB_USER: root
+#       WORDPRESS_DB_PASSWORD: root
+#       WORDPRESS_DB_NAME: wordpress
+#     restart: unless-stopped
 
-    healthcheck:
-      test: ["CMD", "mariaDB", "-e", "SELECT 1"]
-      interval: 1m30s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
-      start_interval: 5s
+#     healthcheck:
+#       test: ["CMD", "mariaDB", "-e", "SELECT 1"]
+#       interval: 1m30s
+#       timeout: 30s
+#       retries: 5
+#       start_period: 30s
+#       start_interval: 5s
     
-volumes:
+# volumes:
 
-  nginx:
-  mariadb:
-  wordpress:
+#   nginx:
+#   mariadb:
+#   wordpress:
 
 
 
-networks:
-  name:
-    nginx-net: {}
-    mariaDB-net: {}
-    wordpress-net: {}
-  network_mode: "bridge"
-  # config:
-    # - subnet: "172.16.238.0/24"
+# networks:
+#   name:
+#     nginx-net: {}
+#     mariaDB-net: {}
+#     wordpress-net: {}
+#   network_mode: "bridge"
+#   # config:
+#     # - subnet: "172.16.238.0/24"
