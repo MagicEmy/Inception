@@ -1,75 +1,76 @@
-version: '3'
+version: "3.8"
 
 services:
   nginx:
-    # docker build -t nginx 
-    build: requirements/nginx/
-    dockerfile: Dockerfile
-    container name: nginx
-    env_file: .env 
-    ports:
-      - "443:443"
-    restart: unless-stopped 
-    # or always?
-    depends_on:
-      - serviceName: .requirements/nginx
-        condition: service_started
-    networks:
-      - nginx-net
-    volumes:
-        - type: bind
-          source: ./nginx/nginx.conf
-          target: /etc/nginx/nginx.conf
-
-  mariadb:
+    container_name: nginx
+    env_file: .env
     build:
-      context: .requirements/mariadb
+      context: requirements/nginx
       dockerfile: Dockerfile
-    image: mariadb
-    container name: mariadb
-    networks:
-      - mariaDB-net
+    image: nginx:nginx
     volumes:
-      - ./mariadb:/var/lib/mysql
-
+    - "wordpress:/var/www/html/"
+    restart: always
+    #restart: unless-stopped
+    networks:
+      - "inception-network"
+    ports:
+      - '443:443'
+    depends_on:
+    - wordpress
 
   wordpress:
-    image: wordpress
-    container name: wordpress
-    networks:
-      - wordpress-net
+    container_name: wordpress
+    env_file: .env
+    build:
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    image: wordpress:wordpress
+    restart: always
     volumes:
-      - ./wordpress:/var/www/html
-#     depends_on:
-#       - mariadb
-#     environment:
-#       WORDPRESS_DB_HOST: mariadb
-#       WORDPRESS_DB_USER: root
-#       WORDPRESS_DB_PASSWORD: root
-#       WORDPRESS_DB_NAME: wordpress
-#     restart: unless-stopped
+    - "wordpress:/var/www/html/"
+    networks:
+      - "inception-network"
+    depends_on: 
+      - mariadb
 
-#     healthcheck:
-#       test: ["CMD", "mariaDB", "-e", "SELECT 1"]
-#       interval: 1m30s
-#       timeout: 30s
-#       retries: 5
-#       start_period: 30s
-#       start_interval: 5s
-    
-# volumes:
+  mariadb:
+    container_name: mariadb
+    env_file:  .env
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    image: mariadb:mariadb
+    # healthcheck:
+    # test: ["CMD", "mysqladmin", "-h", "localhost", "ping"]
+    # start_period: 5s
+    # interval: 5s
+    # timeout: 2s
+    # retries: 20
+    restart: always
+    volumes:
+    - "db:/var/lib/mysql"
+    networks:
+      - "inception-network"
 
-#   nginx:
-#   mariadb:
-#   wordpress:
+networks:
+  docker-network:
+    name: inception-network
+    driver: bridge
 
 
-
-# networks:
-#   name:
-#     nginx-net: {}
-#     mariaDB-net: {}
-#     wordpress-net: {}
-#   network_mode: "bridge"
-#   # config:
-#     # - subnet: "172.16.238.0/24"
+volumes:
+  wordpress:
+    driver: local
+    name: wordpress
+    driver_opts:
+      o: bind
+      device: ${WORDPRESS_VOLUME}
+      type: none
+  db:
+    driver: local
+    name: db
+    driver_opts:
+      o: bind
+      device: ${MARIADB_VOLUME}
+      type: none

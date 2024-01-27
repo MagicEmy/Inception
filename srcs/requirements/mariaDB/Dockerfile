@@ -8,3 +8,5 @@ RUN apt install -y \
 
 # COPY tools/my.cnf /etc/mysql/my.cnf ?
 
+RUN mkdir -p /var/run/mysqld;\
+	chmod 777 /var/run/mysqld /var/lib/mysql;
