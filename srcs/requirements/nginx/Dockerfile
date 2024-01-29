@@ -12,15 +12,7 @@ RUN mkdir -p /etc/nginx/ssl &&\
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
 	-out /etc/ssl/certs/nginx-selfsigned.crt
 
-# The req command primarily creates and processes certificate requests in PKCS#10 format. It can also create self-signed certificates.
-# -newkey rsa:2048: This option creates a new certificate request and a new private key at the same time
-# when creating certificate, OpenSSL will ask us for a password. If we ask for something to enter when starting the container, it will not be able to build
-# -nodes option , our private key will simply end up without a password.
-# must then indicate to OpenSSL where we wish to store the certificate and key of our SSL by adding the -out and -keyout options.
-
-# modify the NGINX configuration file as desired . we could redirect certain sentences in the config file , but we will instead use the keywordCOPYofDockerfile, 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-# https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/
 
 RUN chmod 755 /var/www/html
 RUN chown -R www-data:www-data /var/www/html 
@@ -30,6 +22,14 @@ EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
 
+
+
+# https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/
+# The req command primarily creates and processes certificate requests in PKCS#10 format. It can also create self-signed certificates.
+# -newkey rsa:2048: This option creates a new certificate request and a new private key at the same time
+# when creating certificate, OpenSSL will ask us for a password. If we ask for something to enter when starting the container, it will not be able to build
+# -nodes option , our private key will simply end up without a password.
+# must then indicate to OpenSSL where we wish to store the certificate and key of our SSL by adding the -out and -keyout options.
 # Mount the certificates from the host to the container: 
 # Instead of creating a new certificate each time you build the image, 
 # you can create the certificate once on your host machine and then mount it 

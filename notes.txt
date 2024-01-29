@@ -1,3 +1,8 @@
+create an image with dockerfile in this dir
+	docker build -t nginx-ema . 
+
+
+
 nginx configuration##
 # You should look at the following URL's in order to grasp a solid understanding
 # of Nginx configuration files in order to fully unleash the power of Nginx.

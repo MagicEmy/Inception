@@ -1,0 +1,180 @@
+Attaching to mariadb, nginx, wordpress
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+wordpress  | Creating config
+wordpress  | Domain: emlicame.42.fr
+wordpress  | Downloading Wordpress...
+wordpress  | Downloading WordPress 6.4.2 (en_US)...
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 0
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+wordpress  | md5 hash verified: 02fed2da612a11e621f271e9a397c9c1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+wordpress  | Success: WordPress downloaded.
+wordpress  | Configuring Wordpress...
+wordpress  | Success: Generated 'wp-config.php' file.
+wordpress  | Setting permissions...
+wordpress  | Installing Wordpress...
+wordpress  | Error: Error establishing a database connection. This either means that the username and password information in your `wp-config.php` file is incorrect or that contact with the database server at `mariadb` could not be established. This could mean your host’s database server is down.
+wordpress exited with code 0
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+wordpress  | Error: WordPress files seem to already be present here.
+wordpress exited with code 1
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb    | mariadb database was already initialized
+mariadb    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+mariadb exited with code 1
