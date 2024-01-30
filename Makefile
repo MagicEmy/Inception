@@ -6,10 +6,10 @@ COMPOSE_LOC = srcs/docker-compose.yml
 all: up
 
 up:
-# mkdir -p $(HOME)/data/db
-# mkdir -p $(HOME)/data/www
-	mkdir -p /Users/emanuela/data/wordpress
-	mkdir -p /Users/emanuela/data/mariadb
+	mkdir -p /home/emlicame/data/db
+	mkdir -p /home/emlicame/data/www
+# mkdir -p /Users/emanuela/data/wordpress
+# mkdir -p /Users/emanuela/data/mariadb
 	$(DOCKER_COMPOSE) -f $(COMPOSE_LOC) up --build --remove-orphans
 
 down:
@@ -27,8 +27,9 @@ clean: down
 #volumes that are no longer associated with containers after a docker system prune,
 
 fclean: clean
-	rm -rf /Users/emanuela/wordpress
-	rm -rf /Users/emanuela/mariadb
+
+	rm -rf /home/emlicame/data/db
+	rm -rf /home/emlicame/data/www
 
 re: fclean all
 

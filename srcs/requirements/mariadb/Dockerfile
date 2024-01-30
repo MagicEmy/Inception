@@ -13,9 +13,6 @@ RUN sed 's/bind-address            = 127.0.0.1/bind-address            = 0.0.0.0
 RUN mkdir -p /var/run/mysqld;\
 	chmod 777 /var/run/mysqld /var/lib/mysql;
 
-# COPY tools/my.cnf /etc/mysql/my.cnf
-# COPY tools/wordpress.sql /tmp/wordpress.sql
-
 # Connect mariadb with the database_volume /var/lib/mysql
 # we set up in docker-compose.yml
 RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
