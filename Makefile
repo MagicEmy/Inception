@@ -6,8 +6,8 @@ COMPOSE_LOC = srcs/docker-compose.yml
 all: up
 
 up:
-	mkdir -p /home/emlicame/data/db
-	mkdir -p /home/emlicame/data/www
+	mkdir -p /home/emlicame/data/wordpress
+	mkdir -p /home/emlicame/data/mariadb
 # mkdir -p /Users/emanuela/data/wordpress
 # mkdir -p /Users/emanuela/data/mariadb
 	$(DOCKER_COMPOSE) -f $(COMPOSE_LOC) up --build --remove-orphans
@@ -28,8 +28,8 @@ clean: down
 
 fclean: clean
 
-	rm -rf /home/emlicame/data/db
-	rm -rf /home/emlicame/data/www
+	rm -rf /home/emlicame/data/mariadb
+	rm -rf /home/emlicame/data/wordpress
 
 re: fclean all
 

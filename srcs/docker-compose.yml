@@ -62,13 +62,13 @@ volumes:
     name: wp
     driver_opts:
       o: bind
-      device: /home/emlicame/data/www
+      device: /home/emlicame/data/wordpress
       type: none
   db:
     name: db
     driver_opts:
       o: bind
-      device: /home/emlicame/data/db
+      device: /home/emlicame/data/mariadb
       type: none
 
 
