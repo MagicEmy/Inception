@@ -1,6 +1,6 @@
     Tools:
 
-****** init.sql ******
+****** start.sql ******
 
 this file contains the queries that would be run in order to create the database, user that would be used by wordpress.
 
@@ -16,16 +16,11 @@ create user if not exists ':ADMIN'@'%' identified by ':APASS';
 grant all privileges on *.* to ':ADMIN'@'%';
 flush privileges;
 
-    ***** createdb.sh ******
+    ***** start.sh ******
 
 #!/bin/bash
 
 # infile modification of the queries file to replace the placeholders with the expanded values
-sed -i "s/\:DB_NAME/${DB_NAME}/g" /mariadb-conf.d/init.sql
-sed -i "s/\:USER/${DB_USER}/g" /mariadb-conf.d/init.sql
-sed -i "s/\:UPASS/${USER_PASSWORD}/g" /mariadb-conf.d/init.sql
-sed -i "s/\:ADMIN/${ADMIN}/g" /mariadb-conf.d/init.sql
-sed -i "s/\:APASS/${ADMIN_PASSWORD}/g" /mariadb-conf.d/init.sql
 
 # create directories that will be used by mariadb to store runtime files like the file containing the pid of the running instance
 if [ ! -d /var/run/mysqld ]; then

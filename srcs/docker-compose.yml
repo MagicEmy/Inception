@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   nginx:
@@ -9,11 +9,12 @@ services:
     ports:
       - '443:443'
     volumes:
-      - wp:/var/www/html/
-    restart: always
+      - wp:/var/www/
+    restart: on-failure
+    #restart: always
     #restart: unless-stopped
     networks:
-      - "inception-network"
+      - inception-network
     depends_on:
       - wordpress
 
@@ -24,13 +25,13 @@ services:
     env_file: .env
     expose:
       - '9000'
-    restart: always
+    restart: on-failure
     depends_on: 
       - mariadb
     networks:
-      - "inception-network"
+      - inception-network
     volumes:
-      - wp:/var/www/html/
+      - wp:/var/www/
 
   mariadb:
     build: requirements/mariadb
@@ -45,15 +46,15 @@ services:
       retries: "20"
     expose:
       - '3306'
-    restart: always
+    restart: on-failure
     networks:
-      - "inception-network"
+      - inception-network
     volumes:
-      - "db:/var/lib/mysql"
+      - db:/var/lib/mysql
 
 networks:
   inception-network:
-    name: "inception-network"
+    name: inception-network
     driver: bridge
 
 
@@ -62,13 +63,13 @@ volumes:
     name: wp
     driver_opts:
       o: bind
-      device: /home/emlicame/data/wordpress
+      device: ${WORDPRESS_VOLUME}
       type: none
   db:
     name: db
     driver_opts:
       o: bind
-      device: /home/emlicame/data/mariadb
+      device: ${MARIADB_VOLUME}
       type: none
 
 

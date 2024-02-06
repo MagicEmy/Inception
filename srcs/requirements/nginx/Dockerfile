@@ -6,17 +6,20 @@ RUN apt install -y\
 	nginx\
 	openssl
 
+COPY conf/nginx.conf /etc/nginx/sites-available/nginx.conf
+
+# Removes everything in sites-enabled/
+# Forces symlink of sites-available/nginx.conf under the name sites-enabled/nginx.conf
+RUN rm -rf /etc/nginx/sites-enabled/* &&\
+	ln -sf /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+
+# Create a self-signed certificate
 RUN mkdir -p /etc/nginx/ssl &&\
 	openssl req -x509 -nodes -newkey rsa:2048 \
 	-subj "/C=NL/ST=Noord-Holland/L=Amsterdam/O=Codam/CN=emlicame" \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
 	-out /etc/ssl/certs/nginx-selfsigned.crt
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
-
-RUN chmod 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html 
-#Sets user and group (common)used by web servers, such as NGINX and Apache, to handle web-related processes.
 
 EXPOSE 443
 

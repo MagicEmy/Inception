@@ -1,25 +1,57 @@
 FROM debian:oldstable
 
-# Install latest system updates
-RUN apt update && apt upgrade -y
+# Install required packages
+RUN apt update -y && \
+    apt upgrade -y && \
+    apt install -y \
+        php7.4 \
+        php7.4-fpm \
+        php7.4-mysql \
+        php7.4-curl \
+        php7.4-gd \
+        php7.4-intl \
+        php7.4-mbstring \
+        php7.4-soap \
+        php7.4-xml \
+        php7.4-zip \
+        mariadb-client && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install required software
-RUN apt install -y mariadb-client php php-bcmath php-curl php-imagick php-intl php-json php-mbstring php-mysql php-xml php-zip php-fpm curl unzip
+# Download WordPress
+ADD https://wordpress.org/wordpress-6.4.2.tar.gz /var/www/wordpress.tar.gz
 
-# Download wp-cli (Wordpress Command Line Interface)
-RUN curl -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o wp-cli.phar
-RUN php wp-cli.phar --info
-RUN chmod +x wp-cli.phar
-RUN cp wp-cli.phar /usr/local/bin/wp
-RUN sed -i "s+listen = /run/php/php7.4-fpm.sock+listen = wordpress:9000+g" /etc/php/7.4/fpm/pool.d/www.conf
-RUN mkdir -p ./run/php
+# Extract WordPress to /var/www/
+RUN tar -xzf /var/www/wordpress.tar.gz -C /var/www/ && \
+    mv /var/www/wordpress/* /var/www/ && \
+    rmdir /var/www/wordpress && \
+    rm /var/www/wordpress.tar.gz
 
-EXPOSE 9000
+# Change ownership of web directory
+RUN chown -R root:root /var/www/ \
+	&& chmod -R 755 /var/www/
 
-# Set up and run wordpress
-WORKDIR /var/www/html
-COPY tools/wp-config.sh /tmp/wp-config.sh
 
-CMD ["sh", "/tmp/wp-config.sh"]
+# Download wp-cli PHP Archive to /usr/local/bin/
+ADD https://raw.githubusercontent.com/wp-cli/builds/3e345df698faea02d64baebcb2fa6fc523231494/phar/wp-cli-release.phar /usr/local/bin/wp-cli
 
+# Allow executing wp-cli
+RUN chmod +x /usr/local/bin/wp-cli
+
+# Prevent "ERROR: Unable to create the PID file (/run/php/php7.4-fpm.pid).: No such file or directory"
+RUN mkdir -p /run/php
+
+# Changes the address on which to accept FastCGI requests from the default value of "/run/php/php7.4-fpm.sock"
+RUN sed 's/listen = .*/listen = wordpress:9000/' -i /etc/php/7.4/fpm/pool.d/www.conf
+
+# Prevents arbitrary environment variables from reaching FPM worker processes
+# This sed command is turning this comment into an executed line
+RUN sed 's/;clear_env = no/clear_env = no/' -i /etc/php/7.4/fpm/pool.d/www.conf
+
+# Copy start script and set permissions
+COPY tools/start.sh /home/start.sh
+RUN chmod +x /home/start.sh
+
+# Define the entry point
+ENTRYPOINT ["/home/start.sh"]
 
