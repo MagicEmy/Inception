@@ -1,6 +1,6 @@
 NAME = inception
 
-DOCKER_COMPOSE = docker-compose
+DOCKER_COMPOSE = docker compose
 COMPOSE_LOC = srcs/docker-compose.yml
 
 include srcs/.env
@@ -8,8 +8,6 @@ include srcs/.env
 all: up
 
 up:
-# mkdir -p /Users/emanuela/data/wordpress
-# mkdir -p /Users/emanuela/data/mariadb
 	mkdir -p $(MARIADB_VOLUME) $(WORDPRESS_VOLUME)
 	$(DOCKER_COMPOSE) -f $(COMPOSE_LOC) up --build --detach --remove-orphans
 
