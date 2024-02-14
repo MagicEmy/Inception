@@ -33,23 +33,3 @@ ENTRYPOINT ["nginx", "-g", "daemon off;"]
 # when creating certificate, OpenSSL will ask us for a password. If we ask for something to enter when starting the container, it will not be able to build
 # -nodes option , our private key will simply end up without a password.
 # must then indicate to OpenSSL where we wish to store the certificate and key of our SSL by adding the -out and -keyout options.
-# Mount the certificates from the host to the container: 
-# Instead of creating a new certificate each time you build the image, 
-# you can create the certificate once on your host machine and then mount it 
-# into the container when you run it1. Here’s an example of how you can do this:
-# docker run -v /host/path/to/certs:/container/path/to/certs -d IMAGE_ID
-# Use a script that sets up the host’s SSL certificates in the guest: 
-# This method doesn’t require you to rebuild any containers1. 
-# example https://github.com/AriFordsham/docker-cert/blob/master/docker
-# If you don't add the line to change ownership with chown in your Dockerfile, 
-# the ownership of the files and directories within your container's filesystem 
-# will be set to the default values inherited from the base image or 
-# the way they were added during the Docker image build process.
-# Here are some potential consequences of not setting ownership explicitly:
-# Default Ownership: The ownership might be set to the default values defined 
-# in the base image. This could be the root user and root group, 
-# depending on the base image you are using.
-# Permission Issues: The web server running inside the container, 
-# typically represented by the www-data user and group, 
-# might not have the necessary permissions to read or write to certain files or directories. 
-# This can lead to permission issues when your web application tries to access or modify files.

@@ -32,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all up down start stop clean fclean
+.PHONY: all up down start stop clean fclean re

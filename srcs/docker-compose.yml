@@ -10,9 +10,9 @@ services:
       - '443:443'
     volumes:
       - wp:/var/www/
-    restart: on-failure
+    #restart: on-failure
     #restart: always
-    #restart: unless-stopped
+    restart: unless-stopped
     networks:
       - inception-network
     depends_on:
@@ -25,7 +25,8 @@ services:
     env_file: .env
     expose:
       - '9000'
-    restart: on-failure
+    # restart: on-failure
+    restart: unless-stopped
     depends_on: 
       - mariadb
     networks:
@@ -46,7 +47,7 @@ services:
       retries: "20"
     expose:
       - '3306'
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - inception-network
     volumes:

@@ -18,7 +18,7 @@ RUN apt update -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Download WordPress
+# Download WordPress - The ADD command automatically handles downloading files from URLs and copying them into the image
 ADD https://wordpress.org/wordpress-6.4.2.tar.gz /var/www/wordpress.tar.gz
 
 # Extract WordPress to /var/www/
@@ -27,7 +27,7 @@ RUN tar -xzf /var/www/wordpress.tar.gz -C /var/www/ && \
     rmdir /var/www/wordpress && \
     rm /var/www/wordpress.tar.gz
 
-# Change ownership of web directory
+# Change ownership of web directory to avoid default :will be set to the user and group IDs of the user who built the image.
 RUN chown -R root:root /var/www/ \
 	&& chmod -R 755 /var/www/
 
