@@ -26,9 +26,7 @@ clean: down
 #volumes that are no longer associated with containers after a docker system prune,
 
 fclean: clean
-	rm -rf $(MARIADB_VOLUME)
-	rm -rf $(WORDPRESS_VOLUME)
-	rm -rf $(VOLUME_DIR)
+	sudo rm -rf $(MARIADB_VOLUME) $(WORDPRESS_VOLUME) $(VOLUME_DIR)
 
 re: fclean all
 
