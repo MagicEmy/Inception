@@ -5,7 +5,7 @@ set -e
 
 # Check if WordPress configuration file exists
 if [ ! -f "/var/www/wp-config.php" ]; then
-    echo "Creating WordPress configuration"
+    echo "Configuring Wordpress..."
 	# Create WordPress configuration using wp-cli
     wp-cli config create \
         --allow-root \
@@ -28,9 +28,7 @@ if [ ! -f "/var/www/wp-config.php" ]; then
         --admin_email="$WP_ADMIN_EMAIL" \
         --url="$WP_ADMIN_URL"
 
-    echo "Creating additional user"
-
-    # Create additional WordPress user using wp-cli
+    echo "Creating Wordpress user $WP_USER_NAME..."
     wp-cli user create \
         "$WP_USER_NAME" \
         "$WP_USER_EMAIL" \
@@ -38,10 +36,11 @@ if [ ! -f "/var/www/wp-config.php" ]; then
         --path=/var/www/ \
         --user_pass="$WP_USER_PASSWORD"
 else
-    echo "WordPress configuration already exists. Skipping installation."
+    echo "WordPress configuration already exists."
 fi
 
-# Start PHP-FPM
-echo "Starting PHP-FPM"
+echo "Wordpress was successfully installed."
+# Launch php-fpm in the foreground
+echo "Launching php-fpm..."
 # --nodaemonize forces staying in the foreground
 exec php-fpm7.4 --nodaemonize

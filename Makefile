@@ -21,6 +21,7 @@ stop:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_LOC) stop
 
 clean: down
+	docker volume rm $(shell docker volume ls -q)
 	docker system prune -af
 	docker volume prune -f 
 #volumes that are no longer associated with containers after a docker system prune,

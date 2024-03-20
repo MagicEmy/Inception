@@ -22,8 +22,16 @@ echo "Running mariadbd"
 # exec replaces the shell process with mariadbd
 exec mariadbd
 
-# When the last command in the script is not preceded by exec, 
-# the shell creates yet another process to execute it. 
-# This means that the shell process itself remains, consuming resources unnecessarily.
+
+
+
+# set -e  enable the exit immediately option in the shell.
+# if any command in the script fails, the script will terminate immediately.
+# ensuring that the script does not continue running if an error occurs.
+
+# The exec command is used to replace the shell process with the specified command.
+# This means that the shell process is terminated and the command is executed in its place.
+# Important to run a command in place of the shell, rather than as a child process of the shell.
+# When a command is run as a child process, the shell process remains running.
 # However, when you use exec with the final command, 
 # the shell replaces its own process with that command.

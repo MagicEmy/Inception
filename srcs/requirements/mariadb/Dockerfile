@@ -23,6 +23,12 @@ RUN chmod +x /home/start.sh
 # execute the start.sh script
 ENTRYPOINT ["/home/start.sh"]
 
+
+
+
+
+
+
 # ENTRYPOINT ensures that the initialization script is executed every time the container starts, 
 # regardless of any additional command-line arguments provided by users.
 # The start.sh script is responsible for starting the MariaDB server and creating the necessary database and user.

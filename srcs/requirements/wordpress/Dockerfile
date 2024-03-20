@@ -44,10 +44,6 @@ RUN mkdir -p /run/php
 # Changes the address on which to accept FastCGI requests from the default value of "/run/php/php7.4-fpm.sock"
 RUN sed 's/listen = .*/listen = wordpress:9000/' -i /etc/php/7.4/fpm/pool.d/www.conf
 
-# Prevents arbitrary environment variables from reaching FPM worker processes
-# This sed command is turning this comment into an executed line
-RUN sed 's/;clear_env = no/clear_env = no/' -i /etc/php/7.4/fpm/pool.d/www.conf
-
 # Copy start script and set permissions
 COPY tools/start.sh /home/start.sh
 RUN chmod +x /home/start.sh

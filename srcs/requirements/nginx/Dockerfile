@@ -27,9 +27,11 @@ ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
 
-# https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/
+
+
+
+
 # The req command primarily creates and processes certificate requests in PKCS#10 format. It can also create self-signed certificates.
 # -newkey rsa:2048: This option creates a new certificate request and a new private key at the same time
-# when creating certificate, OpenSSL will ask us for a password. If we ask for something to enter when starting the container, it will not be able to build
 # -nodes option , our private key will simply end up without a password.
 # must then indicate to OpenSSL where we wish to store the certificate and key of our SSL by adding the -out and -keyout options.
